@@ -1,0 +1,21 @@
+name: Test Tap
+
+on:
+  pull_request:
+  push:
+  workflow_dispatch:
+
+env:
+  HOMEBREW_NO_AUTO_UPDATE: "1"
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: Homebrew/actions/setup-homebrew@main
+      - run: brew tap "$GITHUB_REPOSITORY" "$GITHUB_WORKSPACE"
+      - run: brew readall --syntax "$GITHUB_REPOSITORY"
+      - run: brew audit --strict --online --new --formula "$GITHUB_REPOSITORY/git-credential-gopass"
+      - run: brew install --build-from-source "$GITHUB_REPOSITORY/git-credential-gopass"
+      - run: brew test "$GITHUB_REPOSITORY/git-credential-gopass"
