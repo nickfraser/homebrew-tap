@@ -1,8 +1,7 @@
 # Homebrew Tap
 
 Custom Homebrew formulae for Linux x86_64. Formulae in this tap are intentionally
-limited to the platforms declared in their formula definitions. The tap is hosted
-at https://github.com/nickfraser/homebrew-tap.
+limited to the platforms declared in their formula definitions.
 
 ## Install
 
