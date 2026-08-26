@@ -1,15 +1,13 @@
 # Homebrew Tap
 
 Custom Homebrew formulae for Linux x86_64. Formulae in this tap are intentionally
-limited to the platforms declared in their formula definitions.
+limited to the platforms declared in their formula definitions. The tap is hosted
+at https://github.com/nickfraser/homebrew-tap.
 
 ## Install
 
-Replace `<OWNER>` and `<TAP>` with the GitHub repository owner and tap name. A
-repository named `homebrew-example` is referenced as `<OWNER>/example`.
-
 ```sh
-brew install <OWNER>/<TAP>/git-credential-gopass
+brew install nickfraser/tap/git-credential-gopass
 ```
 
 Homebrew will tap the repository during the direct install. As with any
@@ -40,11 +38,11 @@ the version and checksum together only after reviewing and testing a new asset.
 Run these checks on Linux x86_64 before publishing formula changes:
 
 ```sh
-brew tap <OWNER>/<TAP>
-brew readall --syntax <OWNER>/<TAP>
-brew audit --strict --online --new --formula <OWNER>/<TAP>/git-credential-gopass
-brew install --build-from-source <OWNER>/<TAP>/git-credential-gopass
-brew test <OWNER>/<TAP>/git-credential-gopass
+brew tap nickfraser/tap
+brew readall --syntax nickfraser/tap
+brew audit --strict --online --new --formula nickfraser/tap/git-credential-gopass
+brew install --build-from-source nickfraser/tap/git-credential-gopass
+brew test nickfraser/tap/git-credential-gopass
 ```
 
 [gopass-helper]: https://github.com/gopasspw/git-credential-gopass
