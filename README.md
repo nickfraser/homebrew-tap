@@ -7,6 +7,7 @@ limited to the platforms declared in their formula definitions.
 
 ```sh
 brew install nickfraser/tap/git-credential-gopass
+brew install nickfraser/tap/podman-compose-host
 ```
 
 Homebrew will tap the repository during the direct install. As with any
@@ -27,6 +28,21 @@ does not change Git configuration during installation. Enable it explicitly:
 git-credential-gopass configure --global
 ```
 
+### `podman-compose-host`
+
+Installs [podman-compose][podman-compose] without installing Podman. Provide a
+compatible `podman` executable through the host operating system or another
+package manager, and ensure it is available on `PATH`.
+
+This formula installs the standard `podman-compose` command and conflicts with
+Homebrew core's `podman-compose`. Replace the core formula before installing
+this variant:
+
+```sh
+brew uninstall podman-compose
+brew install nickfraser/tap/podman-compose-host
+```
+
 ## Maintaining Formulae
 
 Use a tagged, platform-specific upstream archive and its SHA-256 checksum for
@@ -39,9 +55,12 @@ Run these checks on Linux x86_64 before publishing formula changes:
 ```sh
 brew tap nickfraser/tap
 brew readall --syntax nickfraser/tap
-brew audit --strict --online --new --formula nickfraser/tap/git-credential-gopass
-brew install --build-from-source nickfraser/tap/git-credential-gopass
-brew test nickfraser/tap/git-credential-gopass
+for formula in git-credential-gopass podman-compose-host; do
+  brew audit --strict --online --new --formula "nickfraser/tap/$formula"
+  brew install --build-from-source "nickfraser/tap/$formula"
+  brew test "nickfraser/tap/$formula"
+done
 ```
 
 [gopass-helper]: https://github.com/gopasspw/git-credential-gopass
+[podman-compose]: https://github.com/containers/podman-compose

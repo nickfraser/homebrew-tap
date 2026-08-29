@@ -11,11 +11,17 @@ env:
 jobs:
   test:
     runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        formula:
+          - git-credential-gopass
+          - podman-compose-host
     steps:
       - uses: actions/checkout@v4
       - uses: Homebrew/actions/setup-homebrew@main
       - run: brew tap "$GITHUB_REPOSITORY" "$GITHUB_WORKSPACE"
       - run: brew readall --syntax "$GITHUB_REPOSITORY"
-      - run: brew audit --strict --online --new --formula "$GITHUB_REPOSITORY/git-credential-gopass"
-      - run: brew install --build-from-source "$GITHUB_REPOSITORY/git-credential-gopass"
-      - run: brew test "$GITHUB_REPOSITORY/git-credential-gopass"
+      - run: brew audit --strict --online --new --formula "$GITHUB_REPOSITORY/${{ matrix.formula }}"
+      - run: brew install --build-from-source "$GITHUB_REPOSITORY/${{ matrix.formula }}"
+      - run: brew test "$GITHUB_REPOSITORY/${{ matrix.formula }}"
