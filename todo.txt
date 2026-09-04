@@ -1,0 +1,4 @@
+(C) 2026-09-04 Add cask or tap for Alacritty @pc @ai @>30mins +homebrew-tap id:homebrew-tap-JBE7X2CZ state:planned
+(C) 2026-09-04 Add cask or tap for wine @pc @ai @>30mins +homebrew-tap id:homebrew-tap-o9sfDMWE state:planned
+(C) 2026-09-04 Add cask or tap for terminator @pc @ai @>30mins +homebrew-tap id:homebrew-tap-genUGarL state:planned
+(C) 2026-09-04 Add cask or tap for tuxedo-hooks @pc @ai @<30mins +homebrew-tap id:homebrew-tap-ZVNgrEHb state:planned
