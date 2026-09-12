@@ -65,7 +65,7 @@ class PodmanComposeHost < Formula
 
     assert_path_exists log
     commands = log.read
-    assert_match(/^--version$/, commands)
+    assert_match(/^--version\s*$/, commands)
     assert_match(/^ps\b/, commands)
     assert_match(/^create\b/, commands)
   end
