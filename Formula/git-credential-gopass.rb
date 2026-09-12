@@ -1,19 +1,18 @@
 class GitCredentialGopass < Formula
   desc "Git credential helper backed by gopass"
   homepage "https://github.com/gopasspw/git-credential-gopass"
-  url "https://github.com/gopasspw/git-credential-gopass/releases/download/v1.16.1/git-credential-gopass-1.16.1-linux-amd64.tar.gz"
-  sha256 "164e87faa15b83b6c9692b0624268b0ea6ae58fe57d163cd5862c171fb8762b5"
+  url "https://github.com/gopasspw/git-credential-gopass/releases/download/v1.17.2/git-credential-gopass-1.17.2-linux-amd64.tar.gz"
+  sha256 "d768a63b5eeb5ec3818432031430bb1f9626affd761fb8675c31f79b184135e0"
   license "MIT"
-
-  depends_on :linux
-  depends_on arch: :x86_64
-  depends_on "git"
-  depends_on "gnupg"
 
   livecheck do
     url :stable
     strategy :github_latest
   end
+
+  depends_on arch: :x86_64
+  depends_on "gnupg"
+  depends_on :linux
 
   def install
     bin.install "git-credential-gopass"
@@ -31,7 +30,6 @@ class GitCredentialGopass < Formula
     assert_match version.to_s, shell_output("#{bin}/git-credential-gopass version")
 
     system bin/"git-credential-gopass", "configure", "--global"
-    git = formula_opt_bin("git")/"git"
-    assert_equal "gopass", shell_output("#{git} config --global --get credential.helper").strip
+    assert_equal "gopass", shell_output("git config --global --get credential.helper").strip
   end
 end
