@@ -17,6 +17,7 @@ jobs:
         formula:
           - git-credential-gopass
           - podman-compose-host
+          - tuxedo-hooks
     steps:
       - uses: actions/checkout@v4
       - uses: Homebrew/actions/setup-homebrew@main

@@ -8,6 +8,7 @@ limited to the platforms declared in their formula definitions.
 ```sh
 brew install nickfraser/tap/git-credential-gopass
 brew install nickfraser/tap/podman-compose-host
+brew install nickfraser/tap/tuxedo-hooks
 ```
 
 Homebrew will tap the repository during the direct install. As with any
@@ -43,6 +44,12 @@ brew uninstall podman-compose
 brew install nickfraser/tap/podman-compose-host
 ```
 
+### `tuxedo-hooks`
+
+Installs the [tuxedo-hooks][tuxedo-hooks] keyboard-driven terminal UI and CLI
+for todo.txt with post-mutation hooks from its upstream Linux x86_64 release.
+The archive URL and SHA-256 checksum are pinned in the formula.
+
 ## Maintaining Formulae
 
 Use a tagged, platform-specific upstream archive and its SHA-256 checksum for
@@ -55,7 +62,7 @@ Run these checks on Linux x86_64 before publishing formula changes:
 ```sh
 brew tap nickfraser/tap
 brew readall --syntax nickfraser/tap
-for formula in git-credential-gopass podman-compose-host; do
+for formula in git-credential-gopass podman-compose-host tuxedo-hooks; do
   brew audit --strict --online --new --formula "nickfraser/tap/$formula"
   brew install --build-from-source "nickfraser/tap/$formula"
   brew test "nickfraser/tap/$formula"
@@ -64,3 +71,4 @@ done
 
 [gopass-helper]: https://github.com/gopasspw/git-credential-gopass
 [podman-compose]: https://github.com/containers/podman-compose
+[tuxedo-hooks]: https://github.com/nickfraser/tuxedo-hooks
