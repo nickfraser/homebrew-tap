@@ -7,6 +7,7 @@ limited to the platforms declared in their formula definitions.
 
 ```sh
 brew install nickfraser/tap/git-credential-gopass
+brew install nickfraser/tap/flameshot
 brew install nickfraser/tap/podman-compose-host
 brew install nickfraser/tap/tuxedo-hooks
 ```
@@ -15,6 +16,13 @@ Homebrew will tap the repository during the direct install. As with any
 third-party tap, review and trust the formula before installing it.
 
 ## Formulae
+
+### `flameshot`
+
+Builds [Flameshot][flameshot] from source against Homebrew's Qt libraries. This
+avoids the FUSE runtime used by the upstream Linux AppImage. A graphical desktop
+session and D-Bus are still required; Wayland sessions also need a working
+`xdg-desktop-portal` and desktop-specific portal backend from the host system.
 
 ### `git-credential-gopass`
 
@@ -62,7 +70,7 @@ Run these checks on Linux x86_64 before publishing formula changes:
 ```sh
 brew tap nickfraser/tap
 brew readall --syntax nickfraser/tap
-for formula in git-credential-gopass podman-compose-host tuxedo-hooks; do
+for formula in flameshot git-credential-gopass podman-compose-host tuxedo-hooks; do
   brew audit --strict --online --new --formula "nickfraser/tap/$formula"
   brew install --build-from-source "nickfraser/tap/$formula"
   brew test "nickfraser/tap/$formula"
@@ -70,5 +78,6 @@ done
 ```
 
 [gopass-helper]: https://github.com/gopasspw/git-credential-gopass
+[flameshot]: https://flameshot.org/
 [podman-compose]: https://github.com/containers/podman-compose
 [tuxedo-hooks]: https://github.com/nickfraser/tuxedo-hooks
